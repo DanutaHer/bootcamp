@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Dodawanie kursów</title>
+</head>
+<body>
+
+	<form th:action="@{'/kurs/dodaj'}" action="" th:object="${course}" th:method="'post'">
+		<label for="course-name">Nazwa kursu</label>
+		<input type="text" id="course-name" th:field="*{name}"> 
+		<label for="city">Miasto</label> 
+		<select id="city" th:field="*{city}">
+		<option th:each="city: ${cities}" th:value="${city}"
+				th:text="${city}"></option></select>
+				<input type="submit" value="Zapisz"></input>
+
+	</form>
+</body>
+</html>
