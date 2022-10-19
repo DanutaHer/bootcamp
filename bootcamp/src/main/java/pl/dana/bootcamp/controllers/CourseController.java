@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/kurs")
 public class CourseController {
 
-	@GetMapping
+	@GetMapping("")
 	private String course() {
-		return "course";
+		return "course/course";
+	}
+	
+	@GetMapping("/lista")
+	private String courseList() {
+		return "course/courseList";
 	}
 
 }
