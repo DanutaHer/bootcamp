@@ -1,5 +1,7 @@
 package pl.dana.bootcamp.model;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +19,6 @@ import pl.dana.bootcamp.enums.Mode;
 		private String mail;
 		private Cities city;
 		private Mode mode;
+		private List<Course> courses;
 }
+	 

@@ -1,6 +1,6 @@
 package pl.dana.bootcamp.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,11 +12,11 @@ import pl.dana.bootcamp.enums.Mode;
 @Builder
 @Data
 public class Course {
+	private Long id;
 	private String name; 
 	private Cities cities;
 	private Mode mode;
-	private Date startDate;
-	private Date endDate;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	
-
 }

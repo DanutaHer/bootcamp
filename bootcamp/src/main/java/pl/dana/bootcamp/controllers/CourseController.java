@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import pl.dana.bootcamp.enums.Cities;
-import pl.dana.bootcamp.enums.Mode;
 import pl.dana.bootcamp.model.Course;
-import pl.dana.bootcamp.model.Student;
 
 @Controller
 @RequestMapping(value = "/kurs")
@@ -41,22 +39,5 @@ public class CourseController {
 		model.addAttribute("course", Course.builder().build());
 		model.addAttribute("createdCourse", course);
 		return "course/addCourse";
-	}
-
-	@GetMapping("/student")
-	public String addStudent(Model model) {
-		model.addAttribute("cities", Cities.values());
-		model.addAttribute("modes", Mode.values());
-		model.addAttribute("student", Student.builder().build());
-		return "course/addStudent";
-	}
-
-	@PostMapping("/studentDodany")
-	public String createStudent(@ModelAttribute Student student, Model model) {
-		model.addAttribute("cities", Cities.values());
-		model.addAttribute("modes", Mode.values());
-		model.addAttribute("student", Student.builder().build());
-		model.addAttribute("createdStudent", student);
-		return "course/addedStudent";
 	}
 }
