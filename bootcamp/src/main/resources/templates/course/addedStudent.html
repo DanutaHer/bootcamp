@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Student dodany</title>
+</head>
+<body>
+	<p th:if="${createdStudent}">
+		Dodano studenta <br>
+		<span th:text="${createdStudent.firstName}"> </span><br> 
+		<span th:text="${createdStudent.lastName}"></span> <br>
+		<span th:text="${createdStudent.phone}"></span><br>
+		<span th:text="${createdStudent.mail}"></span> <br>
+		<span th:text="${createdStudent.city.label}"></span> <br>
+		<span th:text="${createdStudent.mode.label}"></span><br>
+	</p>
+</body>
+</html>
