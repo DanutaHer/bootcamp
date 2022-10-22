@@ -10,8 +10,4 @@ public enum Cities {
     private Cities(String label) {
         this.label = label;
     }
-
-    private String citiesNames() {
-    	return label;
-    }
 }

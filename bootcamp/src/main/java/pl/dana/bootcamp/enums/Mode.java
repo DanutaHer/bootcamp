@@ -10,8 +10,4 @@ public enum Mode {
     private Mode(String label) {
         this.label = label;
     }
-    
-    private String modeName() {
-    	return label;
-    }
 }
