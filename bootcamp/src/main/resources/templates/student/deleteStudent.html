@@ -8,20 +8,19 @@
 
 <p th:if="${deleteStudent}">
 		Usunięto studenta <br>
-		<span th:text="${deletedStudent.firstName}"> </span><br> 
-		<span th:text="${deletedStudent.lastName}"></span> <br>
+		
 	</p>
-<form th:action="@{'/student/usuwanie'}" action=""
+<form th:action="@{'/student/studentUsuniety'}" action=""
 		th:object="${student}" th:method="'post'">
 		
 		<fieldset>
 		<legend>Znajdz studenta</legend>
 		
 		
-			<label>Imię:<br></label> 
+			<label>Student:<br></label> 
 			<div th:each="student: ${studentList}">
 			<input type="checkbox" th:field="*{firstName}" th:value="${student.id}">
-			<span th:text="${student.firstName}"></span>
+			<span th:text="${student.firstName} + ' ' + ${student.lastName} + ' ' + ${student.mail}"></span>
 			</div>
 		
 		<input type="submit" value="Zapisz"></input>
