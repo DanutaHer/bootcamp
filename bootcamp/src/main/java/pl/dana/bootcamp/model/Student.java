@@ -2,23 +2,31 @@ package pl.dana.bootcamp.model;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import pl.dana.bootcamp.enums.Cities;
-import pl.dana.bootcamp.enums.TypMod;
+import lombok.NoArgsConstructor;
 
+	@Entity
+	@NoArgsConstructor
 	@AllArgsConstructor
 	@Builder
 	@Data
 	public class Student {
-		
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		private Long id;
 		private String firstName; 
 		private String lastName;
 		private int phone;
 		private String mail;
-		private Cities city;
-		private TypMod typmode;
+		@ManyToMany
 		private List<Course> courses;
 }
 	 

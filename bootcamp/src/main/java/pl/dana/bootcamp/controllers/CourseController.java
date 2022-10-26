@@ -8,13 +8,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import lombok.AllArgsConstructor;
 import pl.dana.bootcamp.enums.Cities;
 import pl.dana.bootcamp.enums.TypMod;
 import pl.dana.bootcamp.model.Course;
+import pl.dana.bootcamp.service.CourseService;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping(value = "/kurs")
 public class CourseController {
+	
+	private final CourseService courseService;
 
 	@GetMapping("")
 	public String course() {
@@ -24,6 +29,7 @@ public class CourseController {
 	@GetMapping("/lista")
 	public String courseList(@RequestParam(name = "idKursu", required = false) String id, Model model) {
 		model.addAttribute("id", id);
+		model.addAttribute("courseList", courseService.findAll());
 		return "course/courseList";
 	}
 
@@ -35,12 +41,13 @@ public class CourseController {
 		return "course/addCourse";
 	}
 
-	@PostMapping("/dodaj")
+	@PostMapping("/kursDodany")
 	public String createCourse(@ModelAttribute Course course, Model model) {
 		model.addAttribute("cities", Cities.values());
 		model.addAttribute("modes", TypMod.values());
 		model.addAttribute("course", Course.builder().build());
 		model.addAttribute("createdCourse", course);
-		return "course/addCourse";
+		courseService.save(course);
+		return "course/created";
 	}
 }

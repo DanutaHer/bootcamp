@@ -39,6 +39,7 @@ public class Course {
 	private LocalDate startDate;
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate endDate;
-	private Integer prise;
+	
+	private Integer price;
 	
 }

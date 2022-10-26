@@ -1,7 +1,6 @@
 package pl.dana.bootcamp.controllers;
 
-import java.util.LinkedList;
-import java.util.List;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,36 +8,48 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import pl.dana.bootcamp.enums.Cities;
-import pl.dana.bootcamp.enums.TypMod;
-import pl.dana.bootcamp.model.Course;
+import lombok.AllArgsConstructor;
 import pl.dana.bootcamp.model.Student;
+import pl.dana.bootcamp.service.CourseService;
+import pl.dana.bootcamp.service.StudentService;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/student")
 public class StudentController {
+	
+	private final StudentService studentService;
+	private final CourseService courseService;
 
 	@GetMapping("/dodawanie")
 	public String addStudent(Model model) {
-		model.addAttribute("cities", Cities.values());
-		model.addAttribute("modes", TypMod.values());
-		List<Course> listCourses = new LinkedList<>();
-		listCourses.add(Course.builder().id(1L).name("Java").typmod(TypMod.DAILY).cities(Cities.GDANSK).build());
-		listCourses.add(Course.builder().id(2L).name("Phyton").typmod(TypMod.EVENING).cities(Cities.GDANSK).build());
-		listCourses.add(Course.builder().id(3L).name("HTML").typmod(TypMod.WEEKEND).cities(Cities.GDANSK).build());
-		model.addAttribute("coursesList", listCourses);
+		model.addAttribute("coursesList", courseService.findAll());
 		model.addAttribute("student", Student.builder().build());
 		return "student/addStudent";
 	}
 
 	@PostMapping("/studentDodany")
-	public String createStudent(@ModelAttribute Student student, @RequestParam Long[] coursesId, Model model) {
-		model.addAttribute("cities", Cities.values());
-		model.addAttribute("modes", TypMod.values());
+	public String createStudent(@ModelAttribute Student student, Model model) {
 		model.addAttribute("student", Student.builder().build());
 		model.addAttribute("createdStudent", student);
+		studentService.save(student);
 		return "student/addedStudent";
 	}
+	
+	@GetMapping("/usuwanie")
+	public String deleteStudent(Model model, Student student) {
+		model.addAttribute("studentList", studentService.findAll());
+		studentService.delete(student);
+		return "student/deleteStudent";
+	}
+	
+	@PostMapping("/studentUsuniety")
+	public String deletedStudent(Model model, Student student) {
+		
+		model.addAttribute("deletedStudent", student);
+		return "student/deleteStudent";
+	}
+	
+	
 }

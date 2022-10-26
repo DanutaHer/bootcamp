@@ -12,33 +12,24 @@
 				<tr>
 					<th>ID</th>
 					<th>Nazwa kursu</th>
+					<th>Miasto kursu</th>
+					<th>Tryb kursu</th>
 					<th>Data rozpoczęcia</th>
 					<th>Data zakończenia</th>
 					<th>Cena</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Java od podstaw</td>
-					<td>01.11.2022</td>
-					<td>01.06.2023</td>
-					<td>10 000 zł</td>
+				<tr th:each="course: ${courseList}">
+					<td th:text="${course.id}"></td>
+					<td th:text="${course.name}"></td>
+					<td th:text="${course.cities.label}"></td>
+					<td th:text="${course.typmod.label}"></td>
+					<td th:text="${course.startDate}"></td>
+					<td th:text="${course.endDate}"></td>
+					<td th:text="${course.price}"></td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>Java dla zaawansowanych</td>
-					<td>08.12.2022</td>
-					<td>07.04.2023</td>
-					<td>15 000 zł</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>HTML, JavaScript, CSS</td>
-					<td>08.01.2023</td>
-					<td>10.08.2023</td>
-					<td>6 000 zł</td>
-				</tr>
+				
 			</tbody>
 		</table>
 	</div>

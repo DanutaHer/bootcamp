@@ -6,6 +6,18 @@
 </head>
 <body>
 
-<h1>Zapisane</h1>
+<p th:if="${createdCourse}"> Dodano kurs 
+	<span th:text="${createdCourse.name}"></span> w mieście 
+	<span th:text="${createdCourse.cities.label}"></span>.</p> 
+	<p>
+	Tryb: 
+	<span th:text="${createdCourse.typmod.label}"></span></p> 
+	<p>Rozpoczęcie kursu:  
+	<span th:text="${createdCourse.startDate}"></span></p>
+	<p>Zakończenie kursu: 
+	<span th:text="${createdCourse.endDate}"></span></p> 
+	<p>Cena: 
+	<span th:text="${createdCourse.price}"></span></p>
+
 </body>
 </html>
