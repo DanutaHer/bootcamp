@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import pl.dana.bootcamp.enums.Cities;
-import pl.dana.bootcamp.enums.Mode;
+import pl.dana.bootcamp.enums.TypMod;
 
 	@AllArgsConstructor
 	@Builder
@@ -18,7 +18,7 @@ import pl.dana.bootcamp.enums.Mode;
 		private int phone;
 		private String mail;
 		private Cities city;
-		private Mode mode;
+		private TypMod typmode;
 		private List<Course> courses;
 }
 	 

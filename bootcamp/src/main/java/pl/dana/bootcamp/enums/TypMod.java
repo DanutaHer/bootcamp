@@ -1,13 +1,17 @@
 package pl.dana.bootcamp.enums;
 
-public enum Mode {
+public enum TypMod {
 	DAILY("Dzienny"),
 	WEEKEND("Weekendowy"),
 	EVENING("Wieczorowy");
 	
 	public final String label;
 
-    private Mode(String label) {
+    private TypMod(String label) {
         this.label = label;
+    }
+    
+    public String getMode() {
+        return label;
     }
 }

@@ -21,10 +21,10 @@
 			<option th:each="city: ${cities}" th:value="${city}"
 				th:text="${city.label}"></option></select> 
 				
-		<label for="mode">Tryb<br></label> 
-		<select id="mode" th:field="*{mode}">
-			<option th:each="mode: ${modeList}" th:value="${mode}"
-				th:text="${mode.label}"></option>
+		<label for="mod">Tryb</label> 
+		<select id="mod" th:field="*{typmod}">
+			<option th:each="m: ${modes}" th:value="${m}"
+				th:text="${m.label}"></option>
 		</select>
 				
 				

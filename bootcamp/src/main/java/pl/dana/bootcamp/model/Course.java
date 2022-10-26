@@ -17,7 +17,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import pl.dana.bootcamp.enums.Cities;
-import pl.dana.bootcamp.enums.Mode;
+import pl.dana.bootcamp.enums.TypMod;
 
 @Entity
 @NoArgsConstructor
@@ -33,7 +33,7 @@ public class Course {
 	@Enumerated(EnumType.STRING)
 	private Cities cities;
 	@Enumerated(EnumType.STRING)
-	private Mode mode;
+	private TypMod typmod;
 	
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate startDate;

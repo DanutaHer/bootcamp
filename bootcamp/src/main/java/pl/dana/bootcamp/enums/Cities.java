@@ -10,4 +10,8 @@ public enum Cities {
     private Cities(String label) {
         this.label = label;
     }
+    
+    public String getCity() {
+        return label;
+    }
 }

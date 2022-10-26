@@ -39,15 +39,16 @@
 			</div> 
 		
 		<p>
-		<label for="city">Miasto<br></label> <select id="city" th:field="*{city}">
+		<label for="city">Miasto<br></label> 
+		<select id="city" th:field="*{city}">
 			<option th:each="city: ${cities}" th:value="${city}"
 				th:text="${city.label}"></option>
 		</select>
 		</p>
-		<p><label for="mode">Tryb<br></label> 
-		<select id="mode" th:field="*{mode}">
-			<option th:each="mode: ${modes}" th:value="${mode}"
-				th:text="${mode.label}"></option>
+		<p><label for="mod">Tryb<br></label> 
+		<select id="mod" th:field="*{typmode}">
+			<option th:each="m: ${modes}" th:value="${m}"
+				th:text="${m.label}"></option>
 		</select>
 		</p>
 		
