@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Dodawanie studenta</title>
+</head>
+<body>
+
+	<form th:action="@{'/pracownicy/pracownikDodany'}" action=""
+		th:object="${employee}" th:method="'post'">
+		
+		<fieldset>
+		<legend>Wypełnij formularz</legend>
+		
+		<p>
+			<label for="student-firstName">Imię:<br></label> <input type="text"
+				id="student-firstName" th:field="*{firstName}">
+		</p>
+		<p>
+			<label for="student-lastName">Nazwisko:<br></label> <input type="text"
+				id="student-lastName" th:field="*{lastName}">
+		</p>
+		<p>
+			
+	<label for="student-phone">Telefon:<br></label> <input type="text"
+			id="student-phone" maxlength="9" th:field="*{phone}">
+		</p>
+		<p>
+			
+		<label for="student-mail">Mail:<br></label> <input type="text"
+			id="student-mail" th:field="*{mail}">
+		</p>
+		
+		
+			<label>Wybierz kurs:<br></label> 
+			<div th:each="course: ${coursesList}">
+			<input type="checkbox" th:field="*{courses}" th:value="${course.id}">
+			<span th:text="${course.name}"></span>
+			</div>
+			
+			<p>
+			
+		<label for="salary">Wynagrodzenie:<br></label> 
+		<input type="text" id="salary" th:field="*{salary}">
+		</p>
+		
+		<input type="submit" value="Zapisz"></input>
+		</fieldset>
+		</form>
+</body>
+</html>
