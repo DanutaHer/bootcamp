@@ -40,6 +40,13 @@
 				<label for="price">Cena:</label>
 			<input id="price" type="number" th:field="*{price}"> </p>
 			<p>
+			
+			<p>
+				<label for="teacher">Prowadzący:</label><select id="teacher" th:field="*{employees}">
+				<option th:each="t: ${teacherList}" th:value="${t.id}" th:text="${t.firstName} + ' ' + ${t.lastName}"></option>
+			</select> </p>
+			
+			<p>
 			<input type="submit" value="Zapisz"></input></p>
 		</fieldset>
 	</form>

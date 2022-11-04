@@ -37,20 +37,6 @@ public class StudentController {
 		student.setRolee(roleeService.findByName("user"));
 		studentService.save(student);
 		return "student/addedStudent";
-	}
-	
-	@GetMapping("/usuwanie")
-	public String deleteStudent(Model model, Student student) {
-		model.addAttribute("studentList", studentService.findAll());
-		return "student/deleteStudent";
-	}
-	
-	@PostMapping("/studentUsuniety")
-	public String deletedStudent(Model model, Student student) {
-		model.addAttribute("studentList", studentService.findAll());
-		studentService.delete(student);
-		return "student/deleteStudent";
-	}
-	
+	}	
 	
 }

@@ -8,14 +8,17 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.dana.bootcamp.enums.Cities;
 import pl.dana.bootcamp.enums.TypMod;
 
@@ -23,7 +26,8 @@ import pl.dana.bootcamp.enums.TypMod;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Data
+@Getter
+@Setter
 public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,5 +45,9 @@ public class Course {
 	private LocalDate endDate;
 	
 	private Integer price;
+	
+	@ManyToOne
+	@JoinColumn(name = "teacher_id")
+	private Employees employees;
 	
 }

@@ -13,6 +13,7 @@ import pl.dana.bootcamp.enums.Cities;
 import pl.dana.bootcamp.enums.TypMod;
 import pl.dana.bootcamp.model.Course;
 import pl.dana.bootcamp.service.CourseService;
+import pl.dana.bootcamp.service.EmployeesService;
 
 @Controller
 @AllArgsConstructor
@@ -20,6 +21,7 @@ import pl.dana.bootcamp.service.CourseService;
 public class CourseController {
 	
 	private final CourseService courseService;
+	private final EmployeesService employeesService;
 
 	@GetMapping("")
 	public String course() {
@@ -38,6 +40,7 @@ public class CourseController {
 		model.addAttribute("cities", Cities.values());
 		model.addAttribute("modes", TypMod.values());
 		model.addAttribute("course", Course.builder().build());
+		model.addAttribute("teacherList", employeesService.findEmployeesByRoleName("teacher"));
 		return "course/addCourse";
 	}
 

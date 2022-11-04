@@ -9,25 +9,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
 import pl.dana.bootcamp.model.Employees;
+import pl.dana.bootcamp.service.CourseService;
 import pl.dana.bootcamp.service.EmployeesService;
 import pl.dana.bootcamp.service.RoleeService;
 
 @Controller
 @AllArgsConstructor
 @RequestMapping(value = "/pracownicy")
-public class EmploeesController {
+public class EmployeesController {
 	
 	private final EmployeesService employeesService;
 	private final RoleeService roleeService;
+	private final CourseService courseService;
+	
 	
 	@GetMapping("/dodaj")
-	public String addCourse(Model model) {
+	public String addEmployee(Model model) {
+		model.addAttribute("coursesList", courseService.findAll());
 		model.addAttribute("employee", Employees.builder().build());
 		return "employees/addemployee";
 	}
 
 	@PostMapping("/pracownikDodany")
-	public String createCourse(@ModelAttribute Employees employee, Model model) {
+	public String createEmployee(@ModelAttribute Employees employee, Model model) {
 		model.addAttribute("employee", Employees.builder().build());
 		model.addAttribute("createdEmployee", employee);
 		employee.setRolee(roleeService.findByName("teacher"));

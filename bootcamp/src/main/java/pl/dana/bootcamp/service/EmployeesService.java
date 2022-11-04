@@ -17,8 +17,16 @@ public class EmployeesService {
 	public void save(final Employees employee) {
 		employeesRepository.save(employee);
 	}
-	
-	public List<Employees> findAll(){
+
+	public List<Employees> findAll() {
 		return employeesRepository.findAll();
 	}
+
+	
+	 public List<Employees> findEmployeesByRoleName(String roleeName){ return
+	 employeesRepository.findByRolee_RoleeNameContains(roleeName); }
+	 
+	 public void delete(Long id) {
+		 employeesRepository.deleteById(id);
+	 }
 }
